@@ -58,8 +58,10 @@ for i = 1, 9 do
     })
 end
 
-map("n", "<leader>bd", "<cmd>bdelete<CR>", {
-    desc = "Delete current buffer",
+map("n", "<leader>bd", function()
+    require("bufdelete").bufdelete(0, false)
+end, {
+    desc = "Close current buffer",
 })
 
 map("n", "<leader>bp", "<cmd>BufferLinePickClose<CR>", {

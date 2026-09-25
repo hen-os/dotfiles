@@ -5,6 +5,7 @@ return {
 
         dependencies = {
             "nvim-tree/nvim-web-devicons",
+            "famiu/bufdelete.nvim",
         },
 
         config = function()
@@ -16,8 +17,13 @@ return {
 
                     numbers = "none",
 
-                    close_command = "bdelete! %d",
-                    right_mouse_command = "bdelete! %d",
+                    close_command = function(bufnr)
+                        require("bufdelete").bufdelete(bufnr, false)
+                    end,
+
+                    right_mouse_command = function(bufnr)
+                        require("bufdelete").bufdelete(bufnr, false)
+                    end,
 
                     indicator = {
                         style = "underline",
